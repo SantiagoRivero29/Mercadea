@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_inicio"
+        android:title="@string/st_menu_inicio"
+        android:enabled="false"
+        android:icon="@drawable/ic_inicio"
+
+        />
+
+    <item
+        android:id="@+id/item_chat"
+        android:title="@string/st_menu_chat"
+        android:icon="@drawable/ic_chats"
+        />
+
+    <item
+        android:id="@+id/item_producto"
+        android:title="@string/st_menu_producto"
+        android:icon="@drawable/ic_productos"
+        />
+    <item
+        android:id="@+id/item_cuenta"
+        android:title="@string/st_menu_cuenta"
+        android:icon="@drawable/ic_cuenta"
+
+        />
+    <item
+        android:id="@+id/item_vender"
+        android:title="@string/st_menu_vendedor"
+        android:icon="@drawable/ic_venta"
+        />
+
+
+</menu>

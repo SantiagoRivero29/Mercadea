@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "953107685992",
+    "project_id": "mercadea-d7606",
+    "storage_bucket": "mercadea-d7606.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953107685992:android:0ea21ef8ef7b83805fd1dd",
+        "android_client_info": {
+          "package_name": "com.example.mercadea"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFhZ3SmyFPvOUm3Woz6yc7WcOQrhL21zE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

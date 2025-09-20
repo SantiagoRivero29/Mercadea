@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login">
+
+
+
+
+    <!-- Contenedor principal -->
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_background"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_gradient" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="20dp"
+        >
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/ic_mercadea"
+            android:scaleType="centerInside"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:text="@string/st_welcome"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            />
+
+        <!-- Campo GMAIL -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/st_input_gmail"
+            android:textSize="25dp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp">
+            <EditText
+                android:id="@+id/etGmail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/st_enter_gmail"
+                android:inputType="textEmailAddress"
+                android:background="@android:drawable/edit_text">
+            </EditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Campo Contraseña -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/st_input_password"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginBottom="10dp"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:passwordToggleEnabled="true">
+            <EditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/st_enter_password"
+                android:inputType="textPassword"
+                android:background="@android:drawable/edit_text">
+            </EditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+        <!-- Olvidaste tu contraseña y Crear cuenta-->
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/st_forget_password"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+        <TextView
+            android:id="@+id/tvNoAccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/st_no_account"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:layout_marginBottom="24dp" />
+
+        <!-- Botón de Login -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/st_login_account"
+            android:backgroundTint="@color/mercadeacolor"
+            android:textColor="@android:color/white"
+            android:padding="12dp"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="20dp" />
+
+
+
+    </LinearLayout>
+</RelativeLayout>
