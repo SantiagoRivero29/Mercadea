@@ -4,11 +4,10 @@
     <string name="app_name">Mercadea</string>
 
 
-    //Menu
+    //Menu bottom
     <string name="st_menu_inicio">Inicio</string>
     <string name="st_menu_chat">Chat</string>
     <string name="st_menu_producto">Producto</string>
-
     <string name="st_menu_cuenta">Cuenta</string>
     <string name="st_menu_vendedor">Vender</string>
 
@@ -20,6 +19,7 @@
     <string name="st_welcome">¡Bienvenido a mercadea, en este lugar encontraras muchas opciones de compras al por
     MAYOR!</string>
     <string name="st_welcome_register">¡Registrate en Mercadea y observa las mejores opciones del mercado!</string>
+    <string name="st_welcome_forgotpassword"> ¿Olvidaste tu contraseña? Ingresa tu dirección de correo electrónico registrada y te enviaremos las instrucciones para recuperar la contraseña.</string>
 
 
     <string name="st_input_gmail">Ingresa tu Correo Electronico</string>
@@ -31,6 +31,7 @@
     <string name="st_no_account">¿No tienes cuenta? ¡Registrate!</string>
     <string name="st_create_account">Crear Cuenta</string>
     <string name="st_login_account">Iniciar Sesion</string>
+    <string name="st_forget_account">Recuperar Cuenta</string>
 
 
 
