@@ -11,18 +11,26 @@
         android:roundIcon="@mipmap/ic_logo_mercadea_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mercadea">
+
+        <!-- Splash será la primera pantalla -->
         <activity
-            android:name=".login"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Login -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <!-- Main (pantalla principal después de login) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

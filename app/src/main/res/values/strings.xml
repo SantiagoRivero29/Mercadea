@@ -12,16 +12,13 @@
     <string name="st_menu_vendedor">Vender</string>
 
 
-
-    //Login  y Register
+    //Login y Register
     <string name="st_login">Login</string>
     <string name="st_register">Register</string>
     <string name="st_welcome">¡Bienvenido a mercadea, en este lugar encontraras muchas opciones de compras al por
     MAYOR!</string>
     <string name="st_welcome_register">¡Registrate en Mercadea y observa las mejores opciones del mercado!</string>
     <string name="st_welcome_forgotpassword"> ¿Olvidaste tu contraseña? Ingresa tu dirección de correo electrónico registrada y te enviaremos las instrucciones para recuperar la contraseña.</string>
-
-
     <string name="st_input_gmail">Ingresa tu Correo Electronico</string>
     <string name="st_input_password">Ingresa tu Contraseña</string>
     <string name="st_enter_gmail">Gmail</string>
@@ -34,12 +31,21 @@
     <string name="st_forget_account">Recuperar Cuenta</string>
 
 
+    //Account
+    <string name="label_name">Nombre</string>
+    <string name="value_full_name">Nombre completo</string>
+    <string name="label_email">Correo electrónico</string>
+    <string name="value_example_email">example@example.com</string>
+    <string name="label_phone">Número de teléfono</string>
+    <string name="value_example_phone">012345678</string>
+    <string name="label_settings">Configuración</string>
+    <string name="action_logout">Cerrar sesión</string>
+    <string name="action_delete_account">Eliminar cuenta</string>
 
-
-
-    //
-
-
+    //Chats
+    <string name="action_search_account">Buscar Cuenta</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
