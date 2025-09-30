@@ -48,4 +48,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
+    <string name="name_category_textil">Textil</string>
+    <string name="description_category_textil">Telas, algodones y prendas al por mayor. Todo lo que necesitas para tu negocio textil.</string>
+    <string name="busca_cualquier_producto">Busca cualquier producto</string>
+    <string name="anuncios_del_dia">ANUNCIOS DEL DIA</string>
+
+
 </resources>

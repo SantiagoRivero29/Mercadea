@@ -25,7 +25,7 @@
             android:drawableStart="@drawable/ic_search_gray"
             android:drawablePadding="12dp"
             android:padding="12dp"
-            android:hint="Pretraga"
+            android:hint="@string/busca_cualquier_producto"
             android:textSize="16sp" />
     </com.google.android.material.card.MaterialCardView>
 
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="KATEGORIJE" />
+        android:text="@string/anuncios_del_dia" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoriesRv"

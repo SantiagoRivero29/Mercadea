@@ -1,7 +1,16 @@
 package com.example.mercadea;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
+import android.bluetooth.BluetoothAdapter;
+import android.content.BroadcastReceiver;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +27,8 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNV;
+    private static final int JOB_ID = 1;
+    private TextView tvMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,10 +36,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.main_activity);
 
         bottomNV = findViewById(R.id.bottomNV);
+        tvMenu = findViewById(R.id.tvMenu);
 
         // Fragment inicial
         replaceFragment(new HomeFragment());
-        bottomNV.setSelectedItemId(R.id.item_inicio); // esto marca "Inicio" como seleccionado
+        bottomNV.setSelectedItemId(R.id.item_inicio);
 
         bottomNV.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -38,14 +50,19 @@ public class MainActivity extends AppCompatActivity {
 
                 if (id == R.id.item_inicio) {
                     fragment = new HomeFragment();
+                    tvMenu.setText("Inicio");
                 } else if (id == R.id.item_chat) {
                     fragment = new ChatFragment();
+                    tvMenu.setText("Chat");
                 } else if (id == R.id.item_producto) {
                     fragment = new ProductFragment();
+                    tvMenu.setText("Producto");
                 } else if (id == R.id.item_vender) {
                     fragment = new SellFragment();
+                    tvMenu.setText("Vender");
                 } else if (id == R.id.item_cuenta) {
                     fragment = new AccountFragment();
+                    tvMenu.setText("Cuenta");
                 }
 
                 if (fragment != null) {
@@ -65,52 +82,66 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    // BroadcastReceiver Bluetooth
+    private BroadcastReceiver bluetoothReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (BluetoothAdapter.ACTION_STATE_CHANGED.equals(action)) {
+                int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, BluetoothAdapter.ERROR);
+                String mensaje;
 
+                switch (state) {
+                    case BluetoothAdapter.STATE_OFF:
+                        mensaje = "Bluetooth apagado";
+                        break;
+                    case BluetoothAdapter.STATE_ON:
+                        mensaje = "Bluetooth encendido";
+                        break;
+                    default:
+                        mensaje = "Estado desconocido de Bluetooth";
+                        break;
+                }
 
-    private void verFragmentInicio(){
+                Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
 
-          TextView tituloTextView =  findViewById(R.id.tvMenu);
-        // NOTA: 'requireView()' se usa dentro de un Fragment.
-        // Si estás en una Activity, solo usarías 'findViewById(R.id.mi_titulo);'
+                // Programar Job
+                JobInfo jobInfo = getJobInfo(MainActivity.this);
+                JobScheduler scheduler = (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+                if (scheduler != null) {
+                    scheduler.cancel(JOB_ID);
+                    int result = scheduler.schedule(jobInfo);
+                    if (result == JobScheduler.RESULT_SUCCESS) {
+                        Toast.makeText(context, "Job programado por cambio de Bluetooth", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "Fallo al programar el job", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        }
+    };
 
-        // 2. Usar el método 'setText()' para cambiar su contenido.
-        tituloTextView.setText("Inicio");
-
+    private static JobInfo getJobInfo(MainActivity mainActivity) {
+        ComponentName componentName = new ComponentName(mainActivity, BluetoothJobNotification.class);
+        return new JobInfo.Builder(JOB_ID, componentName)
+                .setRequiredNetworkType(JobInfo.NETWORK_TYPE_NONE)
+                .setMinimumLatency(200)
+                .setOverrideDeadline(5000)
+                .setPersisted(false)
+                .build();
     }
 
-
-    private void verFragmentChat(){
-
-        TextView tituloTextView =  findViewById(R.id.tvMenu);
-        // NOTA: 'requireView()' se usa dentro de un Fragment.
-        // Si estás en una Activity, solo usarías 'findViewById(R.id.mi_titulo);'
-
-        // 2. Usar el método 'setText()' para cambiar su contenido.
-        tituloTextView.setText("Chat");
-
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // Registrar BroadcastReceiver para Bluetooth
+        IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+        registerReceiver(bluetoothReceiver, filter);
     }
 
-    private void verFragmentProducto(){
-
-        TextView tituloTextView =  findViewById(R.id.tvMenu);
-        // NOTA: 'requireView()' se usa dentro de un Fragment.
-        // Si estás en una Activity, solo usarías 'findViewById(R.id.mi_titulo);'
-
-        // 2. Usar el método 'setText()' para cambiar su contenido.
-        tituloTextView.setText("Producto");
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(bluetoothReceiver);
     }
-
-    private void verFragmentVender(){
-
-        TextView tituloTextView =  findViewById(R.id.tvMenu);
-        // NOTA: 'requireView()' se usa dentro de un Fragment.
-        // Si estás en una Activity, solo usarías 'findViewById(R.id.mi_titulo);'
-
-        // 2. Usar el método 'setText()' para cambiar su contenido.
-        tituloTextView.setText("Vender");
-
-    }
-
-
 }
