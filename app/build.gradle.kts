@@ -39,7 +39,12 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.vision.common)
+    implementation(libs.image.labeling.common)
+    implementation(libs.image.labeling.default.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("org.osmdroid:osmdroid-android:6.1.16")
+    implementation("com.google.mlkit:image-labeling:17.0.7")
 }

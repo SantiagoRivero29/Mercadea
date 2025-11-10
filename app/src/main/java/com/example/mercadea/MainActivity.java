@@ -1,5 +1,7 @@
 package com.example.mercadea;
 
+import static androidx.core.content.ContextCompat.registerReceiver;
+
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
 import android.bluetooth.BluetoothAdapter;
@@ -9,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import com.example.mercadea.fragments.AccountFragment;
 import com.example.mercadea.fragments.ChatFragment;
 import com.example.mercadea.fragments.HomeFragment;
+import com.example.mercadea.fragments.MLKitFragment;
+import com.example.mercadea.fragments.MapFragment;
 import com.example.mercadea.fragments.ProductFragment;
 import com.example.mercadea.fragments.SellFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -51,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 if (id == R.id.item_inicio) {
                     fragment = new HomeFragment();
                     tvMenu.setText("Inicio");
+                    Log.d("NAV", "HomeFragment seleccionado");
                 } else if (id == R.id.item_chat) {
                     fragment = new ChatFragment();
                     tvMenu.setText("Chat");
@@ -58,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                     fragment = new ProductFragment();
                     tvMenu.setText("Producto");
                 } else if (id == R.id.item_vender) {
-                    fragment = new SellFragment();
-                    tvMenu.setText("Vender");
+                    fragment = new MLKitFragment();
+                    tvMenu.setText("Escanear");
                 } else if (id == R.id.item_cuenta) {
-                    fragment = new AccountFragment();
-                    tvMenu.setText("Cuenta");
+                    fragment = new SellFragment();
+                    tvMenu.setText("Ver Ubicacion ");
                 }
 
                 if (fragment != null) {
@@ -73,7 +79,12 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
     }
+
+
 
     private void replaceFragment(Fragment fragment) {
         getSupportFragmentManager()

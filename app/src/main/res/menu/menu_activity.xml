@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    
     <item
         android:id="@+id/item_inicio"
         android:title="@string/st_menu_inicio"
@@ -21,13 +23,13 @@
         />
     <item
         android:id="@+id/item_cuenta"
-        android:title="@string/st_menu_cuenta"
+        android:title="Ubicacion"
         android:icon="@drawable/ic_cuenta"
 
         />
     <item
         android:id="@+id/item_vender"
-        android:title="@string/st_menu_vendedor"
+        android:title="Escanear"
         android:icon="@drawable/ic_venta"
         />
 
